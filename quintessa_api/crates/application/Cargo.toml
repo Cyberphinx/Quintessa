@@ -1,0 +1,29 @@
+[package]
+name = "application"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "application"
+path = "src/lib.rs"
+
+[dependencies]
+# Workspace dependencies
+domain = { path = "../domain" }
+
+# External dependencies
+axum = { version = "0.6.20", features = ["macros", "headers"] }
+serde = { version = "1.0.188", features = ["derive"] }
+sea-orm = { version = "0.12.2", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
+itertools = "0.11.0"
+chrono = "0.4.28"
+convert_case = "0.6.0"
+regex = "1.9.4"
+reqwest = { version = "0.11.20", default-features = false, features = ["rustls-tls-webpki-roots"] }
+scraper = "0.18.1"
+lazy_static = "1.4.0"
+tokio = { version = "1.32.0", features = ["fs"] }
+futures = "0.3.28"
+rand = "0.8.5"

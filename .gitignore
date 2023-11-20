@@ -1,0 +1,14 @@
+/quintessa_client/.DS_Store
+/quintessa_client/node_modules
+/quintessa_client/build
+/quintessa_client/.svelte-kit
+/quintessa_client/package
+/quintessa_client/.env
+/quintessa_client/.env.*
+/quintessa_client/!.env.example
+/quintessa_client/vite.config.js.timestamp-*
+/quintessa_client/vite.config.ts.timestamp-*
+/quintessa_client/cert
+/quintessa_api/cert
+/quintessa_api/target
+/quintessa_api/.env

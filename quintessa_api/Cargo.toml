@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "crates/api",
+    "crates/domain",
+    "crates/application",
+    "crates/infrastructure",
+]
+resolver = "2"
+
+# to be able to run with `cargo run`, `check` and so on without selecting a specific package with `-p`
+default-members = [
+  "crates/api",
+]
+
+
