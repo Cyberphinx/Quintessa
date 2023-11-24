@@ -13,6 +13,7 @@
         cv,
         cvMedia,
         showCv,
+        resume,
     } from "$lib/stores/commonStore";
     import { device, height, width } from "$lib/utilities/device";
     import { onDestroy, onMount } from "svelte";
@@ -26,6 +27,7 @@
     export let data: any;
     export let form: any;
     $: data.token ? isAuthenticated.set(true) : isAuthenticated.set(false);
+    $: data.resume ? resume.set(data.resume) : resume.set(undefined);
     $: data.cvMedia ? cvMedia.set(data.cvMedia) : cvMedia.set([]);
     $: data.projects ? projects.set(data.projects) : projects.set([]);
     $: data.supabaseCreds && supabaseCredentials.set(data.supabaseCreds);
@@ -42,7 +44,7 @@
         if (browser) {
             scrollListener = window.addEventListener(
                 "scroll",
-                checkScrollPosition
+                checkScrollPosition,
             );
             checkScrollPosition();
         }
@@ -64,7 +66,7 @@
         <Nav />
     {/if}
 
-    {#if data.token && $projects.length > 0}
+    {#if data.token && $resume !== undefined && $projects.length > 0}
         <div bind:this={$cv} style={$showCv ? "" : "display:none"}>
             <Toolbar {form} />
             <Cv />

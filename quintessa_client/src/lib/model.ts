@@ -13,6 +13,43 @@ export interface LoginResponse {
     token: string;
 }
 
+export interface Resume {
+    id: number;
+    name: string;
+    email: string;
+    mobile: string,
+    website: string,
+    birthdate: string,
+    nationality: string,
+    top_skills: string,
+    languages: string,
+    certifications: string,
+    snippets: string,
+    job_title: string,
+    address: string,
+    summary: string,
+    workshops: string,
+    works: Work[],
+    educations: Education[],
+}
+
+export interface Work {
+    id: number,
+    resume_id: number,
+    company_name: String,
+    position: String,
+    duration: String,
+    location: String,
+    projects: String,
+}
+
+export interface Education {
+    id: number,
+    resume_id: number,
+    school: string,
+    degree: string,
+}
+
 export interface Project {
     id: number;
     created_at: Date;

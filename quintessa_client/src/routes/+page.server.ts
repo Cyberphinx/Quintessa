@@ -19,6 +19,7 @@ export const load: PageServerLoad = async ({ getClientAddress, request, cookies,
     // let geolocation = await agent.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${geoApiKey}&ip=${addr}`);
     // console.log(geolocation);
 
+    let resume: any;
     let projects: any;
     let signedProjects: Project[] = [];
     let cvMedia: SignedMedia[] = [];
@@ -28,6 +29,12 @@ export const load: PageServerLoad = async ({ getClientAddress, request, cookies,
         try {
             // call refresh token functions
             // startRefreshTokenTimer(jwt);
+
+            // fetch CV from database
+            resume = await agent.get(`${base}/resume/1`, cookies.get('jwt')).then((value) => {
+                return value.data;
+            });
+
 
             // get pre-signed supabase images for CV
             cvMedia = await agent.post(`${supabaseUrl}/storage/v1/object/sign/portfolio`, {
@@ -95,6 +102,7 @@ export const load: PageServerLoad = async ({ getClientAddress, request, cookies,
         clientAddr: addr,
         userAgent: userAgent,
         platform: platform,
+        resume,
         cvMedia,
         projects: signedProjects,
         projectsMedia,

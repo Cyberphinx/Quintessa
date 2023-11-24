@@ -17,6 +17,7 @@ use crate::{
             create_project, delete_project_endpoint, edit_project, get_project, get_projects,
             get_totals,
         },
+        resumes_controller::{create_education, create_resume, create_work, get_resume},
         users_controller::{create_user, edit_role_endpoint, login, logout},
     },
     middleware::require_authentication::{require_admin_authentication, require_authentication},
@@ -65,6 +66,9 @@ pub fn create_router(app_state: AppState) -> Router {
         .route("/media/:media_id", delete(delete_media_endpoint))
         .route("/media", get(list_media))
         .route("/media", post(create_media))
+        .route("/work", post(create_work))
+        .route("/education", post(create_education))
+        .route("/resume", post(create_resume))
         .route("/users", post(create_user))
         .route("/users/role", post(edit_role_endpoint))
         .route("/hello_admin", get(hello_admin_auth))
@@ -74,6 +78,7 @@ pub fn create_router(app_state: AppState) -> Router {
         ));
 
     let auth_router = Router::new()
+        .route("/resume/:resume_id", get(get_resume))
         .route("/projects", get(get_projects))
         .route("/projects/totals", get(get_totals))
         .route("/projects/:project_id", get(get_project))

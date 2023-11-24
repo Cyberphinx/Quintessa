@@ -1,4 +1,4 @@
-import type { Project, SignedMedia } from "$lib/model";
+import type { Project, Resume, SignedMedia } from "$lib/model";
 import { writable, type Writable } from "svelte/store";
 
 export const theme: Writable<string> = writable('dark');
@@ -14,6 +14,7 @@ export const cv: Writable<HTMLDivElement | undefined> = writable(undefined);
 export const portfolio: Writable<HTMLDivElement | undefined> = writable(undefined);
 export const you: Writable<HTMLDivElement | undefined> = writable(undefined);
 
+export const resume: Writable<Resume | undefined> = writable(undefined);
 export const cvMedia: Writable<SignedMedia[] | []> = writable([]);
 export const projects: Writable<Project[] | []> = writable([]);
 export const projectsMedia: Writable<SignedMedia[] | []> = writable([]);

@@ -59,6 +59,7 @@ pub struct ResponseProject {
     pub structural_engineer: Option<String>,
     pub services_engineer: Option<String>,
 }
+
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct ResponseProjectDto {
     pub id: i32,

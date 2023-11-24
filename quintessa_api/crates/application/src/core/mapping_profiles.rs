@@ -1,12 +1,24 @@
-use domain::{media, project, refresh_token, user};
+use domain::{education, media, project, refresh_token, resume, user, work};
 use itertools::Itertools;
 
 use crate::{
+    educations::ResponseEducation,
     media::ResponseMedia,
     projects::{ResponseProject, ResponseProjectDto},
     refresh_token::ResponseRefreshToken,
+    resume::ResponseResume,
     users::ResponseUser,
+    works::ResponseWork,
 };
+
+pub fn convert_education_to_response(education: education::Model) -> ResponseEducation {
+    ResponseEducation {
+        id: education.id,
+        resume_id: education.resume_id,
+        school: education.school,
+        degree: education.degree,
+    }
+}
 
 pub fn convert_project_to_response(project: project::Model) -> ResponseProject {
     ResponseProject {
@@ -67,6 +79,26 @@ pub fn convert_project_to_dto(
     }
 }
 
+pub fn convert_resume_to_response(resume: resume::Model) -> ResponseResume {
+    ResponseResume {
+        id: resume.id,
+        name: resume.name,
+        email: resume.email,
+        mobile: resume.mobile,
+        website: resume.website,
+        birthdate: resume.birthdate,
+        nationality: resume.nationality,
+        top_skills: resume.top_skills,
+        languages: resume.languages,
+        certifications: resume.certifications,
+        snippets: resume.snippets,
+        job_title: resume.job_title,
+        address: resume.address,
+        summary: resume.summary,
+        workshops: resume.workshops,
+    }
+}
+
 pub fn convert_media_to_response(media: media::Model) -> ResponseMedia {
     ResponseMedia {
         id: media.id,
@@ -99,5 +131,17 @@ pub fn convert_refresh_token_to_response(
         token: refresh_token.token,
         expires: refresh_token.expires,
         revoked: refresh_token.revoked,
+    }
+}
+
+pub fn convert_work_to_response(work: work::Model) -> ResponseWork {
+    ResponseWork {
+        id: work.id,
+        resume_id: work.resume_id,
+        company_name: work.company_name,
+        position: work.position,
+        duration: work.duration,
+        location: work.location,
+        projects: work.projects,
     }
 }

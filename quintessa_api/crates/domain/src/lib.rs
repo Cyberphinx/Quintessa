@@ -2,7 +2,10 @@
 
 pub mod prelude;
 
+pub mod education;
 pub mod media;
 pub mod project;
 pub mod refresh_token;
+pub mod resume;
 pub mod user;
+pub mod work;

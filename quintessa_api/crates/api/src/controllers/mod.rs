@@ -8,6 +8,7 @@ use crate::utilities::app_error::AppError;
 pub mod hello_world;
 pub mod media_controller;
 pub mod projects_controller;
+pub mod resumes_controller;
 pub mod users_controller;
 
 pub async fn handle_result<T>(

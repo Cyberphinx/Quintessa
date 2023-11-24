@@ -57,15 +57,19 @@ async fn main() {
     // };
 
     // Roll back the last applied migration
-    // match Migrator::down(&db, Some(1)).await {
+    // let migrations = 2;
+    // match Migrator::down(&db, Some(migrations)).await {
     //     Err(error) => {
     //         eprintln!(
-    //             "Error rolling back the last migration to the database: {:?}",
-    //             error
+    //             "Error rolling back the last {} migration to the database: {:?}",
+    //             migrations, error
     //         );
     //         panic!();
     //     }
-    //     Ok(_) => println!("Successfully rolled back the last migration to the database!"),
+    //     Ok(_) => println!(
+    //         "Successfully rolled back the last {} migration to the database!",
+    //         migrations
+    //     ),
     // }
 
     // instantiate a http client
